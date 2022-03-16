@@ -2,21 +2,25 @@ package computing;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
+
+
+
 
 public class Activator implements BundleActivator {
+	  ServiceRegistration computerRegistration;
 
-	private static BundleContext context;
-
-	static BundleContext getContext() {
-		return context;
-	}
-
-	public void start(BundleContext bundleContext) throws Exception {
-		Activator.context = bundleContext;
+	public void start(BundleContext Context) throws Exception {
+		 System.out.println("Computing start");
+		    
+		    Computing computing =new Computing();
+		    computerRegistration=Context.registerService(Computing.class.getName(),computing,null);
+		   
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {
-		Activator.context = null;
+		 System.out.println("Computing stop");
+	        computerRegistration.unregister();
 	}
 
 }
