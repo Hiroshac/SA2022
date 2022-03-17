@@ -1,6 +1,8 @@
 package computing;
 
 public interface ComputingInt {
-	public int selectDegree();
+	public int CheckEligibility();
+//	public int selectDegree();
+	
 
 }
